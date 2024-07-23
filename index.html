@@ -1,1 +1,96 @@
-Hello World
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Beleza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            margin: 0;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            margin-top: 10px;
+            border: 2px solid #ff69b4;
+            border-radius: 5px;
+            width: 80%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .imagem {
+            display: none;
+            margin-top: 20px;
+        }
+        .imagem img {
+            max-width: 300px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detector de Beleza</h1>
+        <p>Insira o nome de um indivíduo para calcular o tamanho de sua beleza</p>
+        <input type="text" id="nome" placeholder="Digite o nome">
+        <button onclick="calcularBeleza()">Calcular</button>
+        <div id="resultado"></div>
+        <div class="imagem" id="imagem">
+            <img src="https://i.imgur.com/9WtS8La.jpeg" alt="Ingrid">
+        </div>
+    </div>
+
+    <script>
+        function calcularBeleza() {
+            const nome = document.getElementById('nome').value;
+            const resultado = document.getElementById('resultado');
+            const imagem = document.getElementById('imagem');
+
+            if (nome.toLowerCase().includes('ingrid')) {
+                resultado.innerHTML = `${nome} é 1000% linda! 😍`;
+                imagem.style.display = 'block';
+            } else {
+                resultado.innerHTML = `${nome} não é tão linda quanto a Ingrid 😔`;
+                imagem.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
