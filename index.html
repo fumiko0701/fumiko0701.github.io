@@ -14,7 +14,6 @@
             align-items: center;
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
-            position: relative; /* Necessário para posicionar a logo */
         }
         .card {
             display: flex;
@@ -93,24 +92,6 @@
         .floating-btn-eye:hover {
             background-color: #007bb5;
         }
-        /* Estilo para a logo */
-        .logo {
-            position: absolute;
-            bottom: 20px;
-            left: 270px;
-            width: 100px;
-            height: auto;
-            z-index: 10;
-        }
-        /* Estilo para a logo em dispositivos móveis com altura maior que a largura */
-        @media (max-width: 768px) and (orientation: portrait) {
-            .logo {
-                position: absolute;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
     </style>
 </head>
 <body>
@@ -130,9 +111,6 @@
     <!-- Botões flutuantes -->
     <button class="floating-btn floating-btn-eye" onclick="window.location.href='escala-online.html'">👁</button> <!-- Botão de olhinho -->
     <button class="floating-btn" onclick="copyText()">&#10148;</button> <!-- Botão de enviar -->
-
-    <!-- Logo -->
-    <img src="1.png" alt="Logo" class="logo">
 
     <script>
         // Definindo variáveis com o conteúdo de cada campo
@@ -155,8 +133,7 @@
 
         // Função para copiar o texto formatado para a área de transferência
         function copyText() {
-            const formattedText = `
-*${nomeCulto}*
+            const formattedText = `*${nomeCulto}*
 _________________________________
 
 💻 - ${pc}
