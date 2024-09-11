@@ -3,93 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detector de Beleza</title>
+    <title>Próximo Culto</title>
     <style>
-        body {
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            position: relative; /* Necessário para posicionar a logo */
+        }
+        .card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f0f8ff;
-            margin: 0;
-        }
-        h1 {
-            color: #ff69b4;
-        }
-        p {
-            font-size: 1.2em;
-            color: #555;
-        }
-        .container {
-            text-align: center;
             background-color: #fff;
             padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 100%;
+            box-sizing: border-box;
         }
-        input[type="text"] {
-            padding: 10px;
-            font-size: 1em;
-            margin-top: 10px;
-            border: 2px solid #ff69b4;
-            border-radius: 5px;
-            width: 80%;
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 350px; /* Ajusta a largura máxima da imagem */
+            border-radius: 10px;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
-            background-color: #ff69b4;
+        #nomeCulto {
+            font-size: 5vw;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .fields {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 350px;
+        }
+        .fields p {
+            font-size: 4vw;
+            margin: 10px 0;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .emoji {
+            font-size: 5vw;
+        }
+        @media (min-width: 768px) {
+            #nomeCulto {
+                font-size: 24px;
+            }
+            .fields p {
+                font-size: 18px;
+            }
+            .emoji {
+                font-size: 24px;
+            }
+        }
+        /* Estilos para os botões flutuantes */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
             border: none;
-            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
         }
-        button:hover {
-            background-color: #ff1493;
+        .floating-btn:hover {
+            background-color: #45a049;
         }
-        #resultado {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
+        .floating-btn-eye {
+            bottom: 100px;
+            background-color: #008CBA;
         }
-        .imagem {
-            display: none;
-            margin-top: 20px;
+        .floating-btn-eye:hover {
+            background-color: #007bb5;
         }
-        .imagem img {
-            max-width: 300px;
-            border-radius: 10px;
+        /* Estilo para a logo */
+        .logo {
+            position: absolute;
+            bottom: 20px;
+            left: 270px;
+            width: 100px;
+            height: auto;
+            z-index: 10;
+        }
+        /* Estilo para a logo em dispositivos móveis com altura maior que a largura */
+        @media (max-width: 768px) and (orientation: portrait) {
+            .logo {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Detector de Beleza</h1>
-        <p>Insira o nome de um indivíduo para calcular o tamanho de sua beleza</p>
-        <input type="text" id="nome" placeholder="Digite o nome">
-        <button onclick="calcularBeleza()">Calcular</button>
-        <div id="resultado"></div>
-        <div class="imagem" id="imagem">
-            <img src="https://i.imgur.com/9WtS8La.jpeg" alt="Ingrid">
+    <div class="card" id="contentToCopy">
+        <img src="proxculto.jpg" alt="Próximo Culto">
+        <p id="nomeCulto"></p>
+        <div class="fields">
+            <p><span class="emoji">💻</span> - <span id="pc"></span></p>
+            <p><span class="emoji">🎥</span> - <span id="cam1"></span></p>
+            <p><span class="emoji">🎥</span> - <span id="cam2"></span></p>
+            <p><span class="emoji">🤳</span> - <span id="storys"></span></p>
+            <p><span class="emoji">🎤</span> - <span id="reporter"></span></p>
+            <p><span class="emoji">📷</span> - <span id="fotos"></span></p>
         </div>
     </div>
 
-    <script>
-        function calcularBeleza() {
-            const nome = document.getElementById('nome').value;
-            const resultado = document.getElementById('resultado');
-            const imagem = document.getElementById('imagem');
+    <!-- Botões flutuantes -->
+    <button class="floating-btn floating-btn-eye" onclick="window.location.href='escala-online.html'">👁</button> <!-- Botão de olhinho -->
+    <button class="floating-btn" onclick="copyText()">&#10148;</button> <!-- Botão de enviar -->
 
-            if (nome.toLowerCase().includes('ingrid')) {
-                resultado.innerHTML = `${nome} é 1000% linda! 😍`;
-                imagem.style.display = 'block';
-            } else {
-                resultado.innerHTML = `${nome} não é tão linda quanto a Ingrid 😔`;
-                imagem.style.display = 'none';
-            }
+    <!-- Logo -->
+    <img src="1.png" alt="Logo" class="logo">
+
+    <script>
+        // Definindo variáveis com o conteúdo de cada campo
+        const nomeCulto = "CULTO DE MISSÕES - 18h";
+        const pc = "MARCOS";
+        const cam1 = "LUCAS";
+        const cam2 = "SAMUEL S";
+        const storys = "DAIRANE";
+        const reporter = "ANDRESSA";
+        const fotos = "JUAN";
+
+        // Atribuindo os valores ao HTML
+        document.getElementById('nomeCulto').textContent = nomeCulto;
+        document.getElementById('pc').textContent = pc;
+        document.getElementById('cam1').textContent = cam1;
+        document.getElementById('cam2').textContent = cam2;
+        document.getElementById('storys').textContent = storys;
+        document.getElementById('reporter').textContent = reporter;
+        document.getElementById('fotos').textContent = fotos;
+
+        // Função para copiar o texto formatado para a área de transferência
+        function copyText() {
+            const formattedText = `
+*${nomeCulto}*
+_________________________________
+
+💻 - ${pc}
+🎥 - ${cam1}
+🎥 - ${cam2}
+🤳 - ${storys}
+🎤 - ${reporter}
+📷 - ${fotos}`;
+
+            navigator.clipboard.writeText(formattedText).then(function() {
+                alert("Texto copiado para a área de transferência!");
+            }, function(err) {
+                alert("Erro ao copiar o texto: " + err);
+            });
         }
     </script>
 </body>
