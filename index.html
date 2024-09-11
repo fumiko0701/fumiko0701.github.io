@@ -14,6 +14,7 @@
             align-items: center;
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            overflow: hidden; /* Evita barras de rolagem horizontais */
         }
         .card {
             display: flex;
@@ -23,9 +24,9 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            max-width: 90%;
-            width: 100%;
+            max-width: 100%; /* Ajusta a largura máxima para 100% */
             box-sizing: border-box;
+            white-space: nowrap; /* Impede quebra de linha no texto */
         }
         img {
             width: 100%;
@@ -37,7 +38,8 @@
             font-size: 5vw;
             margin-top: 20px;
             text-align: center;
-            width: 100%;
+            width: auto; /* Ajusta a largura do título ao conteúdo */
+            overflow: hidden; /* Evita quebra de linha */
         }
         .fields {
             margin-top: 20px;
@@ -96,7 +98,7 @@
 </head>
 <body>
     <div class="card" id="contentToCopy">
-        <img src="proxculto.jpg" alt="Próximo Culto">
+        <img src="proxculto1.jpg" alt="Próximo Culto">
         <p id="nomeCulto"></p>
         <div class="fields">
             <p><span class="emoji">💻</span> - <span id="pc"></span></p>
@@ -112,14 +114,6 @@
     <button class="floating-btn floating-btn-eye" onclick="window.location.href='escala-online.html'">👁</button> <!-- Botão de olhinho -->
     <button class="floating-btn" onclick="copyText()">&#10148;</button> <!-- Botão de enviar -->
 
-
-
-
-
-
-
-
-
     <script>
         // Definindo variáveis com o conteúdo de cada campo
         const nomeCulto = "CULTO DE DOUTRINA - 19h";
@@ -129,16 +123,6 @@
         const storys = "RAYANNE";
         const reporter = "";
         const fotos = "ESTER";
-
-
-
-
-
-
-
-
-
-
 
         // Atribuindo os valores ao HTML
         document.getElementById('nomeCulto').textContent = nomeCulto;
