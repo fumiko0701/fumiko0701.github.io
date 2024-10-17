@@ -10,6 +10,7 @@
             --background-color-dark: #061207;
             --card-background-color-dark: #29524a;
             --text-color-light: #ffffff;
+            --description-color: gray;
         }
 
         body {
@@ -17,24 +18,17 @@
             padding: 0;
             height: 100vh;
             display: flex;
-            justify-content: center; /* Centraliza os elementos horizontalmente */
+            justify-content: center;
             align-items: center;
             background-color: var(--background-color-dark);
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Container para a logo e o card */
         .container {
             display: flex;
-            align-items: center; /* Alinha verticalmente a logo e o card */
-            width: 100%; /* Preenche toda a largura da página */
-            justify-content: space-around; /* Cria espaçamento igual entre a logo e o card */
-        }
-
-        .logo-image {
-            height: 1%; /* Ajuste a altura da logo como percentual - aumente se necessário */
-            max-height: 300px; /* Limita a altura máxima da logo */
-            margin-right: 10px; /* Espaçamento entre a logo e o card */
+            align-items: center;
+            width: 100%;
+            justify-content: space-around;
         }
 
         .card {
@@ -87,7 +81,7 @@
         }
 
         #nomeCulto {
-            font-size: 3vw;
+            font-size: 3.5vw; /* Aumentar tamanho da fonte do nome do culto */
             font-weight: 700;
             color: var(--text-color-light);
             white-space: nowrap;
@@ -95,8 +89,8 @@
         }
 
         #descricaoCulto {
-            font-size: 2vw;
-            color: gray;
+            font-size: 2.5vw; /* Aumentar tamanho da fonte da descrição */
+            color: var(--description-color);
             margin-top: 5px;
         }
 
@@ -108,7 +102,7 @@
         }
 
         .fields p {
-            font-size: 1.8vw;
+            font-size: 3vw; /* Aumentar tamanho da fonte dos campos no mobile */
             margin: 5px 0;
             color: var(--text-color-light);
         }
@@ -135,82 +129,27 @@
             }
         }
 
-        .floating-btn {
-            padding: 10px 20px;
-            color: white;
-            border-radius: 30px;
-            border: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            font-size: 16px;
-            margin-left: 10px;
-        }
-
-        .floating-btn-copy {
-            background-color: #27ae60;
-        }
-
-        .floating-btn-copy:hover {
-            background-color: #229954;
-        }
-
-        .floating-btn-send {
-            background-color: #3498db;
-        }
-
-        .floating-btn-send:hover {
-            background-color: #2980b9;
-        }
-
-        .floating-btn-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: row;
-        }
-
-        body.dark-mode {
-            background-color: var(--background-color-dark);
-        }
-
-        body.dark-mode .card {
-            background-color: var(--card-background-color-dark);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        body.dark-mode #nomeCulto,
-        body.dark-mode .fields p {
-            color: var(--text-color-light);
-        }
-
-        body.dark-mode #descricaoCulto {
-            color: gray;
-        }
-
-        .name-image {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20vw;
-            max-width: 300px;
-        }
-
         /* Estilos para dispositivos móveis */
         @media (max-width: 767px) {
             body {
                 flex-direction: column;
+                justify-content: flex-start; /* Mover o card para o topo da página */
+                align-items: flex-start; /* Garantir alinhamento adequado */
+            }
+
+            .container {
+                justify-content: flex-start; /* Mover o container para o topo */
+                align-items: flex-start;
+                width: 100%;
             }
 
             .card {
                 flex-direction: column;
                 width: 100%;
                 max-width: none;
+                margin-top: 0; /* remove espaço entre o card e o topo */
+                position: relative; /* Manter posição relativa */
+                background-color: #29524a; /* Alterar cor do card */
             }
 
             .card img {
@@ -219,36 +158,36 @@
                 margin: 0;
             }
 
-            .logo-image {
-                position: absolute;
-                bottom: 10px;
-                right: 10px;
-                height: 50px;
-                max-height: none;
-                margin: 0;
+            /* Centralizar os dois primeiros campos */
+            .fields {
+                align-items: center;
+                text-align: center;
             }
 
-            .floating-btn-container {
-                flex-direction: column;
-                top: 10px;
-                right: 10px;
-                gap: 10px;
+            #nomeCulto {
+                font-size: 6vw; /* Nome do culto maior que os demais campos */
             }
 
-            .name-image {
-                position: relative;
-                bottom: -30px;
-                width: 60%;
-                left: 50%;
-                transform: translateX(-50%);
+            .fields p {
+                font-size: 4vw; /* Aumentar tamanho do texto dos campos */
+                color: var(--text-color-light); /* Cor branca para o texto */
+            }
+
+            #descricaoCulto {
+                color: var(--description-color); /* Manter cor cinza na descrição */
+            }
+
+            /* A partir do terceiro campo (pc em diante), alinhar à esquerda */
+            .fields p:nth-child(n+3) {
+                align-self: flex-start;
+                text-align: left;
+                padding-left: 20px; /* Adicionar espaçamento para o alinhamento à esquerda */
             }
         }
     </style>
 </head>
 <body>
-    <div class="container"> <!-- Container para a logo e o card -->
-        <img src="logo.png" alt="Logo da Equipe" class="logo-image"> <!-- Logo da equipe -->
-        
+    <div class="container"> <!-- Container para o card -->
         <div class="card">
             <img src="ceia.jpg" alt="Próximo Culto">
             <div class="card-content">
@@ -263,41 +202,19 @@
                     <p><span class="emoji">📷</span> - <span id="fotos"></span></p>
                 </div>
             </div>
-
-            <div class="floating-btn-container">
-                <button class="floating-btn floating-btn-copy" onclick="copyText()">Copiar</button>
-                <button class="floating-btn floating-btn-send" onclick="window.location.href='escala-online.html'">Visualizar escala</button>
-            </div>
         </div>
     </div>
 
-    <img src="name.png" alt="Nome do Culto" class="name-image"> <!-- Nome do culto -->
-
     <script>
-        const nomeCulto = "SANTA CEIA - 19h";
-        const descricaoCulto = "Sexta-feira | 04/10";
-        const pc = "ISAAC";
-        const cam1 = "SAMUEL S";
-        const cam2 = "SAMUEL F";
-        const storys = "DAIRANE";
-        const reporter = "";
-        const fotos = "INGRID";
-
-        document.getElementById('nomeCulto').innerHTML = `<strong>${nomeCulto}</strong>`;
-        document.getElementById('descricaoCulto').textContent = descricaoCulto;
-        document.getElementById('pc').textContent = pc;
-        document.getElementById('cam1').textContent = cam1;
-        document.getElementById('cam2').textContent = cam2;
-        document.getElementById('storys').textContent = storys;
-        document.getElementById('reporter').textContent = reporter;
-        document.getElementById('fotos').textContent = fotos;
-
-        function copyText() {
-            const text = `Próximo Culto: ${nomeCulto}\n${descricaoCulto}\n💻 - ${pc}\n🎥 - ${cam1}\n🎥 - ${cam2}\n🤳 - ${storys}\n🎤 - ${reporter}\n📷 - ${fotos}`;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Texto copiado!");
-            });
-        }
+        // Definições iniciais (exemplo)
+        document.getElementById('nomeCulto').textContent = 'Culto de Adoração';
+        document.getElementById('descricaoCulto').textContent = 'Venha nos adorar juntos!';
+        document.getElementById('pc').textContent = 'PC 1';
+        document.getElementById('cam1').textContent = 'Câmera 1';
+        document.getElementById('cam2').textContent = 'Câmera 2';
+        document.getElementById('storys').textContent = 'Story 1';
+        document.getElementById('reporter').textContent = 'Repórter';
+        document.getElementById('fotos').textContent = 'Fotógrafo';
     </script>
 </body>
 </html>
