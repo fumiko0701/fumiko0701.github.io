@@ -1,51 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Próximo Culto</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Card with Buttons</title>
     <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Estilo dos botões flutuantes */
+        .floating-buttons {
+            position: absolute;
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #007bff; /* Azul padrão */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            z-index: 999;
+        }
+
+        .button.copy {
+            background-color: #28a745; /* Verde para o botão 'copy' */
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        /* Estilo para o desktop */
+        @media (min-width: 768px) {
+            .button.view::before {
+                content: "Visualizar Escala";
+            }
+
+            .button.copy::before {
+                content: "Copiar";
+            }
+
+            .floating-buttons {
+                top: 10px; /* Distância do topo do card */
+                right: 10px; /* Distância da direita do card */
+            }
+        }
+
+        /* Estilo para o mobile */
+        @media (max-width: 767px) {
+            .button.view::before {
+                content: "📤"; /* Emoji de enviar no botão view */
+            }
+
+            .button.copy::before {
+                content: "📋"; /* Emoji de copiar no botão copy */
+            }
+
+            .button {
+                padding: 10px; /* Ajustar o padding para botões menores no mobile */
+                font-size: 24px; /* Aumentar o tamanho do emoji no mobile */
+            }
+
+            .floating-buttons {
+                bottom: 10px; /* Distância do fundo da tela */
+                right: 10px; /* Distância da direita da tela */
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container"> <!-- Container para o card -->
+
+    <div class="container">
         <div class="card">
-            <img src="ceia.jpg" alt="Próximo Culto">
+            <img src="ceia.jpg" alt="Imagem do Culto">
             <div class="card-content">
                 <div class="fields">
-                    <p id="nomeCulto"><strong></strong></p>
-                    <p id="descricaoCulto"></p>
-                    <p><span class="emoji">💻</span> - <span id="pc"></span></p>
-                    <p><span class="emoji">🎥</span> - <span id="cam1"></span></p>
-                    <p><span class="emoji">🎥</span> - <span id="cam2"></span></p>
-                    <p><span class="emoji">🤳</span> - <span id="storys"></span></p>
-                    <p><span class="emoji">🎤</span> - <span id="reporter"></span></p>
-                    <p><span class="emoji">📷</span> - <span id="fotos"></span></p>
+                    <h1 id="nomeCulto">Nome do Culto</h1>
+                    <p id="descricaoCulto">Descrição do culto</p>
+                    <p><span class="emoji">💻</span> PC</p>
+                    <p><span class="emoji">📷</span> CAM1</p>
+                    <p><span class="emoji">📷</span> CAM2</p>
+                    <p><span class="emoji">📱</span> STORYS</p>
+                    <p><span class="emoji">📰</span> REPORTER</p>
+                    <p><span class="emoji">📸</span> FOTOS</p>
                 </div>
+            </div>
+
+            <!-- Botões flutuantes -->
+            <div class="floating-buttons">
+                <button class="button view"></button>
+                <button class="button copy"></button>
             </div>
         </div>
     </div>
 
-    <script>
-        // Função para copiar texto para a área de transferência
-        function copyText() {
-            const textToCopy = document.getElementById('nomeCulto').textContent + '\n' + document.getElementById('descricaoCulto').textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                alert('Texto copiado para a área de transferência!');
-            }).catch(err => {
-                console.error('Erro ao copiar texto: ', err);
-            });
-        }
-
-        // Definições iniciais (exemplo)
-        document.getElementById('nomeCulto').textContent = 'Culto de Adoração';
-        document.getElementById('descricaoCulto').textContent = 'Venha nos adorar juntos!';
-        document.getElementById('pc').textContent = 'PC 1';
-        document.getElementById('cam1').textContent = 'Câmera 1';
-        document.getElementById('cam2').textContent = 'Câmera 2';
-        document.getElementById('storys').textContent = 'Story 1';
-        document.getElementById('reporter').textContent = 'Repórter';
-        document.getElementById('fotos').textContent = 'Fotógrafo';
-    </script>
 </body>
 </html>
