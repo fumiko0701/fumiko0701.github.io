@@ -1,0 +1,166 @@
+:root {
+    --background-color: #061207;
+    --card-background-color: #29524a;
+    --text-color: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Para permitir que o conteúdo ocupe toda a altura da página */
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    position: relative; /* Para o posicionamento do nome na parte inferior */
+}
+
+/* Animação de deslizar e surgir */
+@keyframes slideIn {
+    from {
+        opacity: 0; /* Começa invisível */
+        transform: translateY(-20px); /* Começa 20px acima */
+    }
+    to {
+        opacity: 1; /* Termina visível */
+        transform: translateY(0); /* Termina na posição original */
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--card-background-color);
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    max-width: 100%;
+    min-width: 350px;
+    width: auto;
+    box-sizing: border-box;
+    position: relative; /* Para o posicionamento do logo */
+}
+
+img {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    border-radius: 10px;
+    animation: slideIn 1s ease-in-out; /* Aplica a animação à imagem */
+}
+
+#nomeCulto {
+    font-size: 5vw;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#descricaoCulto {
+    font-size: 3vw;
+    margin-top: 5px;
+    text-align: center;
+    color: gray;
+}
+
+.fields {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.fields p {
+    font-size: 4vw;
+    margin: 10px 0;
+    text-align: left;
+    padding-left: 20px;
+    color: var(--text-color);
+}
+
+.emoji {
+    font-size: 5vw;
+}
+
+@media (min-width: 768px) {
+    #nomeCulto {
+        font-size: 24px;
+    }
+
+    #descricaoCulto {
+        font-size: 16px;
+    }
+
+    .fields p {
+        font-size: 18px;
+    }
+
+    .emoji {
+        font-size: 24px;
+    }
+}
+
+/* Botões flutuantes */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Alinhado à direita */
+    width: 60px;
+    height: 60px;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-size: 24px;
+}
+
+.floating-btn:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+}
+
+.floating-btn-copy {
+    background-color: #3498db; /* Azul profissional */
+    margin-bottom: 70px; /* Espaço para o botão verde não sobrepor */
+}
+
+.floating-btn-copy:hover {
+    background-color: #2980b9;
+}
+
+.floating-btn-send {
+    background-color: #27ae60; /* Verde profissional */
+}
+
+.floating-btn-send:hover {
+    background-color: #229954;
+}
+
+/* Estilo para a imagem do nome fora do card */
+.name-image {
+    position: absolute;
+    bottom: 20px; /* Distância do fundo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta a centralização */
+    max-width: 100px; /* Tamanho máximo da imagem */
+    height: auto; /* Altura automática */
+}
+
+/* Estilo para o logo dentro do card */
+.logo-image {
+    position: absolute;
+    bottom: 10px; /* Distância do fundo do card */
+    right: 10px; /* Distância da direita */
+    max-width: 50px; /* Tamanho máximo da imagem do logo */
+    height: auto; /* Altura automática */
+}

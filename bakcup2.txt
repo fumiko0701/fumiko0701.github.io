@@ -200,49 +200,6 @@
             width: 20vw;
             max-width: 300px;
         }
-
-        /* Estilos para dispositivos móveis */
-        @media (max-width: 767px) {
-            body {
-                flex-direction: column;
-            }
-
-            .card {
-                flex-direction: column;
-                width: 100%;
-                max-width: none;
-            }
-
-            .card img {
-                width: 100%;
-                border-radius: 15px 15px 0 0;
-                margin: 0;
-            }
-
-            .logo-image {
-                position: absolute;
-                bottom: 10px;
-                right: 10px;
-                height: 50px;
-                max-height: none;
-                margin: 0;
-            }
-
-            .floating-btn-container {
-                flex-direction: column;
-                top: 10px;
-                right: 10px;
-                gap: 10px;
-            }
-
-            .name-image {
-                position: relative;
-                bottom: -30px;
-                width: 60%;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
     </style>
 </head>
 <body>
@@ -293,9 +250,11 @@
         document.getElementById('fotos').textContent = fotos;
 
         function copyText() {
-            const text = `Próximo Culto: ${nomeCulto}\n${descricaoCulto}\n💻 - ${pc}\n🎥 - ${cam1}\n🎥 - ${cam2}\n🤳 - ${storys}\n🎤 - ${reporter}\n📷 - ${fotos}`;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Texto copiado!");
+            const escalaText = `${nomeCulto}\n${descricaoCulto}\nPC: ${pc}\nCAM 1: ${cam1}\nCAM 2: ${cam2}\nStorys: ${storys}\nRepórter: ${reporter || 'N/A'}\nFotos: ${fotos}`;
+            navigator.clipboard.writeText(escalaText).then(() => {
+                alert('Texto copiado para a área de transferência!');
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
             });
         }
     </script>
