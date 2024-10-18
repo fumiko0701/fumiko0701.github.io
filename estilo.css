@@ -103,6 +103,62 @@ body {
     font-size: 2vw;
 }
 
+/* Estilo dos botões flutuantes */
+.floating-buttons {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    background-color: #007bff; /* Azul padrão */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    z-index: 999;
+}
+
+.button.copy {
+    background-color: #28a745; /* Verde para o botão 'copy' */
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+/* Estilo para a imagem name.png como footer */
+.footer-image {
+    display: block; 
+    margin: 0 auto; 
+    max-width: 90%; /* Diminuindo um pouco o tamanho da imagem */
+    height: auto; 
+    position: fixed; /* Fixa a imagem na parte inferior da página */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta a posição horizontal */
+    z-index: 1000; /* Garante que a imagem fique acima de outros elementos */
+}
+
+/* Estilo específico para desktop */
+@media (min-width: 768px) {
+    .footer-image {
+        bottom: 20px; /* Aumenta a distância da imagem para a borda inferior */
+        max-width: 20%;
+    }
+}
+
+/* Estilo específico para mobile */
+@media (max-width: 767px) {
+    .footer-image {
+        bottom: 35px; /* Move a imagem um pouco mais para cima */
+        max-width: 70%; /* Diminuindo o tamanho da imagem no mobile */
+    }
+}
+
 @media (min-width: 768px) {
     #nomeCulto {
         font-size: 24px;
@@ -119,14 +175,33 @@ body {
     .emoji {
         font-size: 24px;
     }
+
+    .button.view::before {
+        content: "Visualizar Escala";
+    }
+
+    .button.copy::before {
+        content: "Copiar";
+    }
+
+    .floating-buttons {
+        top: 10px; /* Distância do topo do card */
+        right: 10px; /* Distância da direita do card */
+    }
 }
 
-/* Estilos para dispositivos móveis */
+/* Estilo para o mobile */
 @media (max-width: 767px) {
     body {
         flex-direction: column;
         justify-content: flex-start; /* Mover o card para o topo da página */
         align-items: flex-start; /* Garantir alinhamento adequado */
+    }
+
+    /* Mover botões flutuantes para a parte inferior direita do card */
+    .floating-buttons {
+        bottom: 10px; /* Distância do fundo do card */
+        right: 10px; /* Distância da direita do card */
     }
 
     .container {
@@ -180,5 +255,13 @@ body {
         align-self: flex-start;
         text-align: left;
         padding-left: 20px; /* Adicionar espaçamento para o alinhamento à esquerda */
+    }
+
+    .button.view::before {
+        content: "📤"; /* Emoji de enviar no botão view */
+    }
+
+    .button.copy::before {
+        content: "📋"; /* Emoji de copiar no botão copy */
     }
 }

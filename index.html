@@ -5,98 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card with Buttons</title>
     <link rel="stylesheet" href="estilo.css">
+    <script>
+        // Função para copiar (vazia por enquanto)
+        function copy() {
+            // Aqui você pode implementar a lógica de cópia mais tarde
+        }
+    </script>
     <style>
-        /* Estilo dos botões flutuantes */
-        .floating-buttons {
-            position: absolute;
-            display: flex;
-            gap: 10px;
+        /* Estilo para a imagem name.png como footer */
+        .footer-image {
+            display: block; 
+            margin: 0 auto; 
+            max-width: 90%; /* Diminuindo um pouco o tamanho da imagem */
+            height: auto; 
+            position: absolute; /* Muda para posição absoluta */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translateX(-50%); /* Ajusta a posição horizontal */
+            z-index: 1000; /* Garante que a imagem fique acima de outros elementos */
+            bottom: 20px; /* Distância da borda inferior */
         }
 
-        .button {
-            background-color: #007bff; /* Azul padrão */
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            z-index: 999;
-        }
-
-        .button.copy {
-            background-color: #28a745; /* Verde para o botão 'copy' */
-        }
-
-        .button:hover {
-            opacity: 0.8;
-        }
-
-        /* Estilo para o desktop */
+        /* Estilo específico para desktop */
         @media (min-width: 768px) {
-            .button.view::before {
-                content: "Visualizar Escala";
+            .footer-image {
+                bottom: 20px; /* Aumenta a distância da imagem para a borda inferior */
+                max-width: 20%;
             }
-
-            .button.copy::before {
-                content: "Copiar";
+            .logo-desktop {
+                max-width: 12%; /* Tamanho da logo no desktop */
+                margin-right: 30px; /* Espaço à direita da logo */
+                margin-top: 10px; /* Ajuste a distância do topo da logo */
             }
-
-            .floating-buttons {
-                top: 10px; /* Distância do topo do card */
-                right: 10px; /* Distância da direita do card */
+            .logo-mobile {
+                display: none; /* Esconde a logo mobile no desktop */
             }
         }
 
-        /* Estilo para o mobile */
+        /* Estilo específico para mobile */
         @media (max-width: 767px) {
-            .button.view::before {
-                content: "📤"; /* Emoji de enviar no botão view */
+            .footer-image {
+                bottom: 40px; /* Ajusta a distância da borda inferior */
+                max-width: 70%; /* Diminuindo o tamanho da imagem no mobile */
+                position: absolute; /* Mantém a posição absoluta para centralização */
+                left: 50%; /* Centraliza horizontalmente */
+                transform: translateX(-50%); /* Ajusta a posição horizontal */
             }
+            .logo-desktop {
+                display: none; /* Esconde a logo desktop no mobile */
+            }
+            .logo-mobile {
+                max-width: 10%; /* Reduzindo o tamanho da logo no mobile */
+                display: block; /* Mostra a logo mobile */
+                margin: 2px; /* Adiciona espaço entre a logo mobile e o card */
+                position: absolute; /* Torna a logo flutuante */
+                top: 15px; /* Ajuste a distância do topo da logo mobile */
+                left: 50%; /* Centraliza horizontalmente */
+                transform: translateX(-50%); /* Ajusta a posição horizontal */
+                z-index: 10; /* Assegura que a logo apareça acima do card */
+            }
+        }
 
-            .button.copy::before {
-                content: "📋"; /* Emoji de copiar no botão copy */
-            }
+        /* Alinhamento do card e logo */
+        .card-container {
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente o card */
+            align-items: center; /* Alinha logo e card ao centro */
+            width: 100%;
+            padding: 60px 0; /* Ajuste o padding superior para centralizar verticalmente */
+            position: relative; /* Permite posicionar elementos filhos */
+        }
 
-            .button {
-                padding: 10px; /* Ajustar o padding para botões menores no mobile */
-                font-size: 24px; /* Aumentar o tamanho do emoji no mobile */
-            }
-
-            .floating-buttons {
-                bottom: 10px; /* Distância do fundo da tela */
-                right: 10px; /* Distância da direita da tela */
-            }
+        .card {
+            display: flex;
+            background-color: var(--card-background-color-dark);
+            padding: 0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1200px;
+            height: auto;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px; /* Espaço entre a logo e o card */
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="card">
-            <img src="ceia.jpg" alt="Imagem do Culto">
-            <div class="card-content">
-                <div class="fields">
-                    <h1 id="nomeCulto">Nome do Culto</h1>
-                    <p id="descricaoCulto">Descrição do culto</p>
-                    <p><span class="emoji">💻</span> PC</p>
-                    <p><span class="emoji">📷</span> CAM1</p>
-                    <p><span class="emoji">📷</span> CAM2</p>
-                    <p><span class="emoji">📱</span> STORYS</p>
-                    <p><span class="emoji">📰</span> REPORTER</p>
-                    <p><span class="emoji">📸</span> FOTOS</p>
+        <div class="card-container">
+            <img src="logo.png" alt="Logo" class="logo-desktop"> <!-- Logo desktop -->
+            <div class="card">
+                <img src="ceia.jpg" alt="Imagem do Culto">
+                <div class="card-content">
+                    <div class="fields">
+                        <h1 id="nomeCulto">Nome do Culto</h1>
+                        <p id="descricaoCulto">Descrição do culto</p>
+                        <p><span class="emoji">💻</span> PC</p>
+                        <p><span class="emoji">📷</span> CAM1</p>
+                        <p><span class="emoji">📷</span> CAM2</p>
+                        <p><span class="emoji">📱</span> STORYS</p>
+                        <p><span class="emoji">📰</span> REPORTER</p>
+                        <p><span class="emoji">📸</span> FOTOS</p>
+                    </div>
+                </div>
+
+                <!-- Botões flutuantes -->
+                <div class="floating-buttons">
+                    <button class="button view" onclick="window.open('escala-online.html', '_self')"></button>
+                    <button class="button copy" onclick="copy()"></button>
                 </div>
             </div>
-
-            <!-- Botões flutuantes -->
-            <div class="floating-buttons">
-                <button class="button view"></button>
-                <button class="button copy"></button>
-            </div>
         </div>
+        <img src="logo.png" alt="Logo" class="logo-mobile"> <!-- Logo no mobile -->
     </div>
+
+    <!-- Imagem name.png como footer -->
+    <img src="name.png" alt="Nome" class="footer-image">
 
 </body>
 </html>
