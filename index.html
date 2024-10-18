@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="estilo.css">
     <script>
         // Definindo variáveis com o conteúdo de cada campo
+        const arte = 'ceia.jpg'; // Variável para a arte do culto
         const nomeCulto = "SANTA CEIA - 19h";
         const descricaoCulto = "Sexta-feira | 04/10";
         const pc = "ISAAC";
@@ -26,6 +27,7 @@
             document.getElementById('storys').textContent = storys;
             document.getElementById('reporter').textContent = reporter;
             document.getElementById('fotos').textContent = fotos;
+            document.getElementById('imagemCulto').src = arte; // Usando a variável arte
         }
 
         // Função para copiar o texto formatado para a área de transferência
@@ -83,11 +85,12 @@ ________________________________
         /* Estilo específico para mobile */
         @media (max-width: 767px) {
             .footer-image {
-                bottom: 5px; /* Ajusta a distância da borda inferior - Aumentada para 60px */
+                bottom: 0px; /* Ajusta a distância da borda inferior */
                 max-width: 70%; /* Diminuindo o tamanho da imagem no mobile */
                 position: absolute; /* Mantém a posição absoluta para centralização */
                 left: 50%; /* Centraliza horizontalmente */
                 transform: translateX(-50%); /* Ajusta a posição horizontal */
+                margin-top: 60px; /* Adiciona um espaço de 60px acima da imagem */
             }
             .logo-desktop {
                 display: none; /* Esconde a logo desktop no mobile */
@@ -136,7 +139,7 @@ ________________________________
         <div class="card-container">
             <img src="logo.png" alt="Logo" class="logo-desktop"> <!-- Logo desktop -->
             <div class="card">
-                <img src="ceia.jpg" alt="Imagem do Culto">
+                <img id="imagemCulto" src="" alt="Imagem do Culto"> <!-- Usando a variável arte -->
                 <div class="card-content">
                     <div class="fields">
                         <h1 id="nomeCulto">Nome do Culto</h1>
