@@ -61,13 +61,13 @@ ________________________________
             left: 50%; /* Centraliza horizontalmente */
             transform: translateX(-50%); /* Ajusta a posição horizontal */
             z-index: 1000; /* Garante que a imagem fique acima de outros elementos */
-            bottom: 20px; /* Distância da borda inferior */
+            bottom: 40px; /* Distância da borda inferior - Aumentada para 40px */
         }
 
         /* Estilo específico para desktop */
         @media (min-width: 768px) {
             .footer-image {
-                bottom: 20px; /* Aumenta a distância da imagem para a borda inferior */
+                bottom: 40px; /* Aumenta a distância da imagem para a borda inferior */
                 max-width: 20%;
             }
             .logo-desktop {
@@ -83,7 +83,7 @@ ________________________________
         /* Estilo específico para mobile */
         @media (max-width: 767px) {
             .footer-image {
-                bottom: 40px; /* Ajusta a distância da borda inferior */
+                bottom: 20px; /* Ajusta a distância da borda inferior - Aumentada para 60px */
                 max-width: 70%; /* Diminuindo o tamanho da imagem no mobile */
                 position: absolute; /* Mantém a posição absoluta para centralização */
                 left: 50%; /* Centraliza horizontalmente */
