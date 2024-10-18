@@ -201,7 +201,7 @@ body {
     /* Mover botões flutuantes para a parte inferior direita do card */
     .floating-buttons {
         bottom: 10px; /* Distância do fundo do card */
-            right: 10px; /* Distância da direita do card */
+        right: 10px; /* Distância da direita do card */
     }
 
     .container {
