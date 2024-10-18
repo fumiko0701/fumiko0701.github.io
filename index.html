@@ -3,13 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card with Buttons</title>
+    <title>Próximo Culto</title>
     <link rel="stylesheet" href="estilo.css">
     <script>
-        // Função para copiar (vazia por enquanto)
-        function copy() {
-            // Aqui você pode implementar a lógica de cópia mais tarde
+        // Definindo variáveis com o conteúdo de cada campo
+        const nomeCulto = "SANTA CEIA - 19h";
+        const descricaoCulto = "Sexta-feira | 04/10";
+        const pc = "ISAAC";
+        const cam1 = "SAMUEL S";
+        const cam2 = "SAMUEL F";
+        const storys = "DAIRANE";
+        const reporter = "";
+        const fotos = "INGRID";
+
+        // Atribuindo os valores ao HTML
+        function populateFields() {
+            document.getElementById('nomeCulto').innerHTML = `<strong>${nomeCulto}</strong>`;
+            document.getElementById('descricaoCulto').textContent = descricaoCulto;
+            document.getElementById('pc').textContent = pc;
+            document.getElementById('cam1').textContent = cam1;
+            document.getElementById('cam2').textContent = cam2;
+            document.getElementById('storys').textContent = storys;
+            document.getElementById('reporter').textContent = reporter;
+            document.getElementById('fotos').textContent = fotos;
         }
+
+        // Função para copiar o texto formatado para a área de transferência
+        function copyText() {
+            const formattedText = `*${nomeCulto}*
+________________________________
+
+💻 - ${pc}
+🎥 - ${cam1}
+🎥 - ${cam2}
+🤳 - ${storys}
+🎤 - ${reporter}
+📷 - ${fotos}`;
+
+            navigator.clipboard.writeText(formattedText).then(function() {
+                alert("Texto copiado para a área de transferência!");
+            }, function(err) {
+                alert("Erro ao copiar o texto: " + err);
+            });
+        }
+
+        // Chamando a função para preencher os campos ao carregar a página
+        window.onload = populateFields;
     </script>
     <style>
         /* Estilo para a imagem name.png como footer */
@@ -102,19 +141,19 @@
                     <div class="fields">
                         <h1 id="nomeCulto">Nome do Culto</h1>
                         <p id="descricaoCulto">Descrição do culto</p>
-                        <p><span class="emoji">💻</span> PC</p>
-                        <p><span class="emoji">📷</span> CAM1</p>
-                        <p><span class="emoji">📷</span> CAM2</p>
-                        <p><span class="emoji">📱</span> STORYS</p>
-                        <p><span class="emoji">📰</span> REPORTER</p>
-                        <p><span class="emoji">📸</span> FOTOS</p>
+                        <p><span class="emoji">💻</span> - <span id="pc"></span></p>
+                        <p><span class="emoji">🎥</span> - <span id="cam1"></span></p>
+                        <p><span class="emoji">🎥</span> - <span id="cam2"></span></p>
+                        <p><span class="emoji">🤳</span> - <span id="storys"></span></p>
+                        <p><span class="emoji">🎤</span> - <span id="reporter"></span></p>
+                        <p><span class="emoji">📷</span> - <span id="fotos"></span></p>
                     </div>
                 </div>
 
                 <!-- Botões flutuantes -->
                 <div class="floating-buttons">
                     <button class="button view" onclick="window.open('escala-online.html', '_self')"></button>
-                    <button class="button copy" onclick="copy()"></button>
+                    <button class="button copy" onclick="copyText()"></button>
                 </div>
             </div>
         </div>
